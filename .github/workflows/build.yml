@@ -418,18 +418,23 @@ jobs:
 
                   try {
 
-                      String enabled =
+                      String enabledServices =
                               Settings.Secure.getString(
                                       getContentResolver(),
                                       Settings.Secure
                                               .ENABLED_ACCESSIBILITY_SERVICES
                               );
 
-                      return enabled != null &&
-                              enabled.contains(
-                                      getPackageName() +
-                                      "/.JarvisAccessibilityService"
-                              );
+                      if (enabledServices == null) {
+                          return false;
+                      }
+
+                      String serviceName =
+                              getPackageName() +
+                              "/" +
+                              JarvisAccessibilityService.class.getName();
+
+                      return enabledServices.contains(serviceName);
 
                   } catch (Exception e) {
                       return false;
