@@ -39,7 +39,7 @@ jobs:
           mkdir -p app/src/main/res/values
           mkdir -p app/src/main/res/xml
 
-          cat > settings.gradle.kts <<'EOF'
+          cat > settings.gradle.kts <<'EOF2'
           pluginManagement {
               repositories {
                   google()
@@ -60,20 +60,20 @@ jobs:
 
           rootProject.name = "JARVIS"
           include(":app")
-          EOF
+          EOF2
 
-          cat > build.gradle.kts <<'EOF'
+          cat > build.gradle.kts <<'EOF2'
           plugins {
               id("com.android.application") version "8.9.2" apply false
           }
-          EOF
+          EOF2
 
-          cat > gradle.properties <<'EOF'
+          cat > gradle.properties <<'EOF2'
           org.gradle.jvmargs=-Xmx2048m -Dfile.encoding=UTF-8
           android.useAndroidX=true
-          EOF
+          EOF2
 
-          cat > app/build.gradle.kts <<'EOF'
+          cat > app/build.gradle.kts <<'EOF2'
           plugins {
               id("com.android.application")
           }
@@ -101,9 +101,9 @@ jobs:
                   targetCompatibility = JavaVersion.VERSION_17
               }
           }
-          EOF
+          EOF2
 
-          cat > app/src/main/AndroidManifest.xml <<'EOF'
+          cat > app/src/main/AndroidManifest.xml <<'EOF2'
           <?xml version="1.0" encoding="utf-8"?>
 
           <manifest xmlns:android="http://schemas.android.com/apk/res/android">
@@ -144,9 +144,9 @@ jobs:
               </application>
 
           </manifest>
-          EOF
+          EOF2
 
-          cat > app/src/main/java/com/jarvis/ai/MainActivity.java <<'EOF'
+          cat > app/src/main/java/com/jarvis/ai/MainActivity.java <<'EOF2'
           package com.jarvis.ai;
 
           import android.Manifest;
@@ -451,9 +451,9 @@ jobs:
                   super.onDestroy();
               }
           }
-          EOF
+          EOF2
 
-          cat > app/src/main/java/com/jarvis/ai/JarvisAccessibilityService.java <<'EOF'
+          cat > app/src/main/java/com/jarvis/ai/JarvisAccessibilityService.java <<'EOF2'
           package com.jarvis.ai;
 
           import android.accessibilityservice.AccessibilityService;
@@ -485,9 +485,9 @@ jobs:
                   super.onDestroy();
               }
           }
-          EOF
+          EOF2
 
-          cat > app/src/main/res/layout/activity_main.xml <<'EOF'
+          cat > app/src/main/res/layout/activity_main.xml <<'EOF2'
           <?xml version="1.0" encoding="utf-8"?>
 
           <LinearLayout
@@ -523,15 +523,15 @@ jobs:
                   android:textSize="18sp" />
 
           </LinearLayout>
-          EOF
+          EOF2
 
-          cat > app/src/main/res/values/strings.xml <<'EOF'
+          cat > app/src/main/res/values/strings.xml <<'EOF2'
           <resources>
               <string name="app_name">JARVIS</string>
           </resources>
-          EOF
+          EOF2
 
-          cat > app/src/main/res/values/styles.xml <<'EOF'
+          cat > app/src/main/res/values/styles.xml <<'EOF2'
           <resources>
 
               <style
@@ -544,9 +544,9 @@ jobs:
               </style>
 
           </resources>
-          EOF
+          EOF2
 
-          cat > app/src/main/res/xml/accessibility_config.xml <<'EOF'
+          cat > app/src/main/res/xml/accessibility_config.xml <<'EOF2'
           <?xml version="1.0" encoding="utf-8"?>
 
           <accessibility-service
@@ -557,7 +557,7 @@ jobs:
               android:canPerformGestures="true"
               android:description="@string/app_name"
               android:notificationTimeout="100" />
-          EOF
+          EOF2
 
       - name: Build APK
         run: |
